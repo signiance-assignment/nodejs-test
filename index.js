@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     // set response content    
         res.send(`<html>
                     <body>
-                        <h1>Hello World</h1>
+                        <h1>Hello Lokesh</h1>
                     </body>
                    </html>`);
  
@@ -17,5 +17,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Hello world`);
+    console.log(`Hello World`);
 })
