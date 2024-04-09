@@ -22,10 +22,7 @@ jobs:
         username: ${{secrets.USER }}
         key: ${{secrets.KEY }}
         port: ${{secrets.PORT }}
-
-    - name: Checkout
-      uses: actions/checkout@v3
-      
+        
         script: |
           cd nodejs-test
           npm install
