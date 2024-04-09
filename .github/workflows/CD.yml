@@ -1,0 +1,30 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["Node.js CI"]
+    types:
+      - completed
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to EC2 instance via SSH deploy
+      uses: appleboy/ssh-action@master   #3rd party github action
+      with:
+        host: ${{secrets.HOST }}
+        username: ${{secrets.USER }}
+        key: ${{secrets.KEY }}
+        port: ${{secrets.PORT }}
+         # Clone this repo
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+        script: |
+          cd nodejs-test
+          npm install
+          pm2 stop index.js --name=nodejs-test
+          pm2 start index.js --name=nodejs-test
