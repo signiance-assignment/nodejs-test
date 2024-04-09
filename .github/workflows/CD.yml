@@ -24,6 +24,8 @@ jobs:
         port: ${{secrets.PORT }}
         
         script: |
+          rm -rf nodejs-test
+          git clone "https://github.com/signiance-assignment/nodejs-test.git"
           cd nodejs-test
           npm install
           pm2 stop index.js --name=nodejs-test
